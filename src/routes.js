@@ -3,10 +3,12 @@ import { Route, IndexRoute } from 'react-router';
 
 import App from './components/App';
 import Books from './components/books';
-import CategoriesList from './components/categories_list';
+import SearchBooks from './components/search_books';
+//import CategoriesList from './components/categories_list';
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={CategoriesList} />
+    <IndexRoute component={Books} />
+    <Route path="search" component={SearchBooks} />
   </Route>
 );
