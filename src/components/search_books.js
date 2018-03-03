@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 import { pickHTMLProps } from 'pick-react-known-prop';
+import { searchBooks } from '../actions/index';
 
 class SearchBooks extends Component {
   render() {
     const { fields: { title, categories, year }, handleSubmit } = this.props;
 
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(this.props.searchBooks)}>
         <h3>Search Books</h3>
         <div className="form-group">
           <label>Title</label>
@@ -44,7 +45,11 @@ class SearchBooks extends Component {
   }
 }
 
-export default reduxForm({
-  form: 'SearchBooksForm',
-  fields: ['title', 'categories', 'year']
-})(SearchBooks);
+export default reduxForm(
+  {
+    form: 'SearchBooksForm',
+    fields: ['title', 'categories', 'year']
+  },
+  null,
+  { searchBooks }
+)(SearchBooks);
