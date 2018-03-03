@@ -14,6 +14,7 @@ export function fetchCategories() {
 }
 
 export function searchBooks(props) {
+  console.log(props);
   const query = {
     query: {
       categories: [],
