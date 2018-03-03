@@ -5,12 +5,14 @@
   "dependencies": {
     "axios": "^0.17.1",
     "bootstrap": "^3.3.7",
+    "pick-react-known-prop": "^0.1.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
     "react-router": "^3.2.0",
     "react-scripts": "1.1.1",
     "redux": "^3.7.2",
+    "redux-form": "^5.3.6",
     "redux-promise": "^0.5.3"
   },
   "scripts": {

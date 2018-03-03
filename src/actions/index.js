@@ -12,3 +12,5 @@ export function fetchCategories() {
     payload: request
   };
 }
+
+export function searchBooks() {}
