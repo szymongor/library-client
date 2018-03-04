@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 import { pickHTMLProps } from 'pick-react-known-prop';
 import { searchBooks } from '../actions/index';
+import { connect } from 'react-redux';
 
 class SearchBooks extends Component {
   render() {
@@ -13,6 +14,7 @@ class SearchBooks extends Component {
         <div className="form-group">
           <label>Title</label>
           <input
+            name="filter.title__contains"
             type="text"
             className="form-control"
             {...pickHTMLProps(title)}

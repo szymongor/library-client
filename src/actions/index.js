@@ -14,7 +14,20 @@ export function fetchCategories() {
 }
 
 export function searchBooks(props) {
-  console.log(props);
+  const config = {
+    headers: { 'content-type': 'application/json' }
+  };
+  const query = formToQueryAdapter(props);
+  console.log(JSON.stringify(query));
+  const request = axios.post(`${ROOT_URL}/books`, query, config);
+
+  return {
+    type: SEARCH_BOOKS,
+    payload: request
+  };
+}
+
+function formToQueryAdapter(formProps) {
   const query = {
     query: {
       categories: [],
@@ -30,10 +43,12 @@ export function searchBooks(props) {
       pagination: { limit: 50, offset: 0 }
     }
   };
-  const request = axios.post(`${ROOT_URL}/books`, query);
 
-  return {
-    type: SEARCH_BOOKS,
-    payload: request
-  };
+  query.query.filters.title__contains = formProps.title;
+  query.query.filters.year__contains = formProps.year;
+  if (formProps.categories) {
+    query.query.categories.push(formProps.categories);
+  }
+
+  return query;
 }
