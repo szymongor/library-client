@@ -1,15 +1,27 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
 import { pickHTMLProps } from 'pick-react-known-prop';
 import { searchBooks } from '../actions/index';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 class SearchBooks extends Component {
+  static contextTypes = {
+    router: PropTypes.object
+  };
+
+  onSubmit(props) {
+    this.props.searchBooks(props).then(() => {
+      this.context.router.push('books');
+    });
+  }
+
   render() {
     const { fields: { title, categories, year }, handleSubmit } = this.props;
 
     return (
-      <form onSubmit={handleSubmit(this.props.searchBooks)}>
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <h3>Search Books</h3>
         <div className="form-group">
           <label>Title</label>
@@ -42,15 +54,24 @@ class SearchBooks extends Component {
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
+        <Link to="/" className="btn btn-danger">
+          Cancel
+        </Link>
       </form>
     );
   }
 }
 
+function validate() {
+  const errors = {};
+  return errors;
+}
+
 export default reduxForm(
   {
     form: 'SearchBooksForm',
-    fields: ['title', 'categories', 'year']
+    fields: ['categories', 'title', 'year'],
+    validate
   },
   null,
   { searchBooks }

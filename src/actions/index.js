@@ -36,18 +36,19 @@ function formToQueryAdapter(formProps) {
         isbn_issn__contains: '',
         signature_bg__contains: '',
         responsibility__contains: '',
-        title__contains: 'Prezentacja Projektu INŻ',
+        title__contains: '',
         volume__contains: '',
         year__contains: ''
       },
       pagination: { limit: 50, offset: 0 }
     }
   };
-
-  query.query.filters.title__contains = formProps.title;
-  query.query.filters.year__contains = formProps.year;
-  if (formProps.categories) {
-    query.query.categories.push(formProps.categories);
+  if (formProps) {
+    if (formProps.title) query.query.filters.title__contains = formProps.title;
+    if (formProps.year) query.query.filters.year__contains = formProps.year;
+    if (formProps.categories) {
+      query.query.categories.push(formProps.categories);
+    }
   }
 
   return query;

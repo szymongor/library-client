@@ -9,6 +9,7 @@ import SearchBooks from './components/search_books';
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={Books} />
+    <Route path="books" component={Books} />
     <Route path="search" component={SearchBooks} />
   </Route>
 );
