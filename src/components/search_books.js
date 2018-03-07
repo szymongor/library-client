@@ -67,12 +67,20 @@ function validate() {
   return errors;
 }
 
+function mapStateToProps(state) {
+  return {
+    initialValues: {
+      title: state.books.filters.title
+    }
+  };
+}
+
 export default reduxForm(
   {
     form: 'SearchBooksForm',
-    fields: ['categories', 'title', 'year'],
+    fields: ['title', 'categories', 'year'],
     validate
   },
-  null,
+  mapStateToProps,
   { searchBooks }
 )(SearchBooks);
