@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CategoriesList from './categories_list';
 import { Link } from 'react-router';
-import { searchBooks } from '../actions/index';
+import { fetchBooks } from '../actions/index';
 
 class Books extends Component {
   componentWillMount() {
-    this.props.searchBooks();
+    console.log('Books: ', this.props.filters);
+    this.props.fetchBooks(this.props.filters);
   }
 
   renderBooks() {
@@ -36,7 +37,10 @@ class Books extends Component {
 }
 
 function mapStateToProps(state) {
-  return { books: state.books.books };
+  return {
+    books: state.books.books,
+    filters: state.books.filters
+  };
 }
 
-export default connect(mapStateToProps, { searchBooks })(Books);
+export default connect(mapStateToProps, { fetchBooks })(Books);

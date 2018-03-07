@@ -12,9 +12,9 @@ class SearchBooks extends Component {
   };
 
   onSubmit(props) {
-    this.props.searchBooks(props).then(() => {
-      this.context.router.push('books');
-    });
+    console.log('SearchBooks: ', props);
+    this.props.searchBooks(props);
+    this.context.router.push('books');
   }
 
   render() {

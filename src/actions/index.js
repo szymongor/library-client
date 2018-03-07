@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const SEARCH_BOOKS = 'SEARCH_BOOKS';
+export const FETCH_BOOKS = 'FETCH_BOOKS';
 export const FETCH_CATEGORIES = 'FETCH_CATEGORIES';
 
 const ROOT_URL = 'http://157.158.16.217:8000';
@@ -13,17 +14,24 @@ export function fetchCategories() {
   };
 }
 
-export function searchBooks(props) {
+export function fetchBooks(props) {
+  console.log('Fetch books: ', props);
   const config = {
     headers: { 'content-type': 'application/json' }
   };
   const query = formToQueryAdapter(props);
-  console.log(JSON.stringify(query));
   const request = axios.post(`${ROOT_URL}/books`, query, config);
 
   return {
-    type: SEARCH_BOOKS,
+    type: FETCH_BOOKS,
     payload: request
+  };
+}
+
+export function searchBooks(props) {
+  return {
+    type: SEARCH_BOOKS,
+    payload: props
   };
 }
 
@@ -40,7 +48,7 @@ function formToQueryAdapter(formProps) {
         volume__contains: '',
         year__contains: ''
       },
-      pagination: { limit: 50, offset: 0 }
+      pagination: { limit: 10, offset: 0 }
     }
   };
   if (formProps) {
