@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.17.1",
     "bootstrap": "^3.3.7",
+    "lodash": "^4.17.5",
     "pick-react-known-prop": "^0.1.2",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
