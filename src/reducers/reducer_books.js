@@ -1,4 +1,4 @@
-import { SEARCH_BOOKS, FETCH_BOOKS } from '../actions/index';
+import { SEARCH_BOOKS, FETCH_BOOKS, FETCH_BOOK } from '../actions/index';
 
 const INITIAL_STATE = { filters: [], books: [], categories: [], book: null };
 
@@ -8,6 +8,8 @@ export default function(state = INITIAL_STATE, action) {
       return { ...state, filters: action.payload };
     case FETCH_BOOKS:
       return { ...state, books: action.payload.data };
+    case FETCH_BOOK:
+      return { ...state, book: action.payload.data[0] };
     default:
       return state;
   }

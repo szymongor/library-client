@@ -4,6 +4,7 @@ import { Route, IndexRoute } from 'react-router';
 import App from './components/App';
 import Books from './components/books';
 import SearchBooks from './components/search_books';
+import BookShow from './components/book_show';
 //import CategoriesList from './components/categories_list';
 
 export default (
@@ -11,5 +12,6 @@ export default (
     <IndexRoute component={Books} />
     <Route path="books" component={Books} />
     <Route path="search" component={SearchBooks} />
+    <Route path="books/:syg_ms" component={BookShow} />
   </Route>
 );

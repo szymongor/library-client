@@ -13,10 +13,14 @@ class Books extends Component {
   renderBooks() {
     return this.props.books.map(book => {
       return (
-        <li className="list-group-item" key={book.signature_ms}>
+        <Link
+          to={'books/' + book.signature_ms}
+          key={book.signature_ms}
+          className="list-group-item"
+        >
           <strong>{book.signature_ms} </strong>
           <span className="pull-xs-right">{book.title}</span>
-        </li>
+        </Link>
       );
     });
   }
