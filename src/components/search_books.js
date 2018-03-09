@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
 import { pickHTMLProps } from 'pick-react-known-prop';
-import { searchBooks } from '../actions/index';
+import { searchBooks, fetchCategories } from '../actions/index';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import _ from 'lodash';
 import { Tabs, Tab, Row, Col, Nav, NavItem } from 'react-bootstrap';
-import CategoriesSelect from './categories_select.js';
+import Category from './category.js';
 
 const FIELDS_CLASSES = 'col-xs-12 col-md-6 ';
 
@@ -67,6 +67,10 @@ class SearchBooks extends Component {
     router: PropTypes.object
   };
 
+  componentWillMount() {
+    this.props.fetchCategories();
+  }
+
   onSubmit(props) {
     console.log('SearchBooks: ', props);
     this.props.searchBooks(props);
@@ -97,6 +101,12 @@ class SearchBooks extends Component {
     );
   }
 
+  renderCategorySelect(category) {
+    return (
+      <Category category={category} key={category.main_category.category_id} />
+    );
+  }
+
   render() {
     const { handleSubmit } = this.props;
 
@@ -120,7 +130,12 @@ class SearchBooks extends Component {
                 <Tab.Pane eventKey="first">
                   {_.map(FIELDS, this.renderField.bind(this))}
                 </Tab.Pane>
-                <Tab.Pane eventKey="second">Tab 2 content</Tab.Pane>
+                <Tab.Pane eventKey="second">
+                  {_.map(
+                    this.props.categories,
+                    this.renderCategorySelect.bind(this)
+                  )}
+                </Tab.Pane>
               </Tab.Content>
             </Col>
           </Row>
@@ -148,6 +163,7 @@ function validate() {
 
 function mapStateToProps(state) {
   return {
+    categories: state.categories.categories,
     initialValues: {
       ...state.books.filters
     }
@@ -161,5 +177,5 @@ export default reduxForm(
     validate
   },
   mapStateToProps,
-  { searchBooks }
+  { searchBooks, fetchCategories }
 )(SearchBooks);
