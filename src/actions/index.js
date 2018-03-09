@@ -40,7 +40,7 @@ export function fetchBook(id) {
   const config = {
     headers: { 'content-type': 'application/json' }
   };
-  const query = formToQueryAdapter({ signature_ms: id });
+  const query = formToQueryAdapter({ syg_ms: id });
   const request = axios.post(`${ROOT_URL}/books`, query, config);
   return {
     type: FETCH_BOOK,
@@ -65,13 +65,17 @@ function formToQueryAdapter(formProps) {
     }
   };
   if (formProps) {
-    if (formProps.signature_ms)
-      query.query.filters.signature_ms = formProps.signature_ms;
+    if (formProps.syg_ms)
+      query.query.filters.signature_ms = String(formProps.syg_ms);
+    if (formProps.syg_bg)
+      query.query.filters.signature_bg__contains = formProps.syg_bg;
+    if (formProps.author)
+      query.query.filters.responsibility__contains = formProps.author;
     if (formProps.title) query.query.filters.title__contains = formProps.title;
-    if (formProps.year) query.query.filters.year__contains = formProps.year;
-    if (formProps.categories) {
-      query.query.categories.push(formProps.categories);
-    }
+    if (formProps.volume)
+      query.query.filters.volume__contains = formProps.volume;
+    if (formProps.year)
+      query.query.filters.year__contains = String(formProps.year);
   }
 
   return query;
