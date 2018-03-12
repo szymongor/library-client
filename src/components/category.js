@@ -1,32 +1,66 @@
 import React, { Component } from 'react';
-import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { fetchCategories } from '../actions/index';
+import { ListGroup, ListGroupItem, FormGroup, Checkbox } from 'react-bootstrap';
 import _ from 'lodash';
 
-function renderSubCategories(subCategory) {
-  return (
-    <ListGroupItem
-      bsSize="small"
-      key={subCategory.category_id}
-      className="col-xs-12 "
-    >
-      {subCategory.category_name}
-    </ListGroupItem>
-  );
-}
+class Category extends Component {
+  constructor(props, context) {
+    super(props, context);
 
-function catOnClick() {
-  console.log('lol');
-}
+    this.state = {
+      expanded: true
+    };
 
-const Category = props => {
-  return (
-    <ListGroup bsSize="small" className="col-xs-12">
-      <ListGroupItem bsSize="small" onClick={catOnClick}>
-        {props.category.main_category.category_name}
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState({
+      expanded: !this.state.expanded
+    });
+  }
+
+  renderSubCategories(subCategory) {
+    return (
+      <ListGroupItem
+        bsSize="small"
+        key={subCategory.category_id}
+        className={this.state.expanded ? 'hidden' : ''}
+      >
+        <Checkbox inline>{subCategory.category_name}</Checkbox>
       </ListGroupItem>
-      {_.map(props.category.subcategories, renderSubCategories)}
-    </ListGroup>
-  );
-};
+    );
+  }
 
-export default Category;
+  render() {
+    return (
+      <ListGroup bsSize="small" className="col-xs-12">
+        <ListGroupItem bsSize="small" onClick={this.handleClick}>
+          <Checkbox inline>
+            {this.props.category.main_category.category_name}
+          </Checkbox>
+        </ListGroupItem>
+        {_.map(
+          this.props.category.subcategories,
+          this.renderSubCategories.bind(this)
+        )}
+      </ListGroup>
+    );
+  }
+}
+
+function mapStateToProps(state) {
+  return {
+    categories: state.categories.categories
+    // initialValues: {
+    //   ...state.books.filters
+    // }
+  };
+}
+
+// function mapDispatchToProps(dispatch) {
+//   return bindActionCreators({ fetchCategories }, dispatch);
+// }
+
+export default connect(mapStateToProps, { fetchCategories })(Category);

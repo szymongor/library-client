@@ -72,7 +72,6 @@ class SearchBooks extends Component {
   }
 
   onSubmit(props) {
-    console.log('SearchBooks: ', props);
     this.props.searchBooks(props);
     this.context.router.push('books');
   }
@@ -113,7 +112,7 @@ class SearchBooks extends Component {
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <h3>Wyszukaj Książki</h3>
-        <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+        <Tab.Container id="left-tabs-example" defaultActiveKey="second">
           <Row className="clearfix">
             <Col sm={12}>
               <Nav bsStyle="tabs">

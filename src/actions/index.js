@@ -16,7 +16,6 @@ export function fetchCategories() {
 }
 
 export function fetchBooks(props) {
-  console.log('Fetch books: ', props);
   const config = {
     headers: { 'content-type': 'application/json' }
   };

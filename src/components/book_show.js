@@ -14,7 +14,7 @@ class BookShow extends Component {
     }
     return (
       <div>
-        <Link className="btn btn-danger" to="books">
+        <Link className="btn btn-danger" to="/books">
           Back
         </Link>
         <h3>{book.title}</h3>
@@ -26,7 +26,6 @@ class BookShow extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state.books);
   return { book: state.books.book };
 }
 
