@@ -5,7 +5,6 @@ import App from './components/App';
 import Books from './components/books';
 import SearchBooks from './components/search_books';
 import BookShow from './components/book_show';
-//import CategoriesList from './components/categories_list';
 
 export default (
   <Route path="/" component={App}>

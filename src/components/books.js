@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import CategoriesList from './categories_list';
 import { Link } from 'react-router';
 import { fetchBooks } from '../actions/index';
 
