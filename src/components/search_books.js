@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { reduxForm } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import { pickHTMLProps } from 'pick-react-known-prop';
 import { searchBooks, fetchCategories } from '../actions/index';
-import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import _ from 'lodash';
 import { Tabs, Tab, Row, Col, Nav, NavItem } from 'react-bootstrap';
@@ -72,30 +72,26 @@ class SearchBooks extends Component {
   }
 
   onSubmit(props) {
+    console.log(props);
     this.props.searchBooks(props);
     this.context.router.push('books');
   }
 
   renderField(fieldConfig, field) {
-    const fieldHelper = this.props.fields[field];
+    console.log(`form-group` + fieldConfig.classes);
     return (
       <div
-        className={
-          `form-group ${
-            fieldHelper.touched && fieldHelper.invalid ? 'has-danger' : ''
-          }` + fieldConfig.classes
-        }
+        className={`form-group ` + fieldConfig.classes}
         key={fieldConfig.label}
       >
-        <label>{fieldConfig.label}</label>
-        <fieldConfig.type
-          type={fieldConfig.fieldType}
-          className="form-control"
-          {...pickHTMLProps(fieldHelper)}
+        <h4>{fieldConfig.label}</h4>
+        <Field
+          className="col-xs-12"
+          name={field}
+          component="input"
+          type={fieldConfig.type}
+          placeholder={fieldConfig.label}
         />
-        <div className="text-help">
-          {fieldHelper.touched ? fieldHelper.error : ''}
-        </div>
       </div>
     );
   }
@@ -108,11 +104,10 @@ class SearchBooks extends Component {
 
   render() {
     const { handleSubmit } = this.props;
-
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <h3>Wyszukaj Książki</h3>
-        <Tab.Container id="left-tabs-example" defaultActiveKey="second">
+        <Tab.Container id="left-tabs-example" defaultActiveKey="first">
           <Row className="clearfix">
             <Col sm={12}>
               <Nav bsStyle="tabs">
@@ -154,9 +149,7 @@ class SearchBooks extends Component {
 
 function validate() {
   const errors = {};
-  _.each(FIELDS, field => {
-    //console.log(field);
-  });
+  _.each(FIELDS, field => {});
   return errors;
 }
 
@@ -169,12 +162,10 @@ function mapStateToProps(state) {
   };
 }
 
-export default reduxForm(
-  {
-    form: 'SearchBooksForm',
-    fields: _.keys(FIELDS),
-    validate
-  },
-  mapStateToProps,
-  { searchBooks, fetchCategories }
-)(SearchBooks);
+SearchBooks = connect(mapStateToProps, { searchBooks, fetchCategories })(
+  SearchBooks
+);
+
+export default reduxForm({
+  form: 'searchBooksForm'
+})(SearchBooks);
