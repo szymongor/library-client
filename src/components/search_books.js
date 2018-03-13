@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
-import { pickHTMLProps } from 'pick-react-known-prop';
 import { searchBooks, fetchCategories } from '../actions/index';
 import { Link } from 'react-router';
 import _ from 'lodash';
-import { Tabs, Tab, Row, Col, Nav, NavItem } from 'react-bootstrap';
-import Category from './category.js';
+import { Tab, Row, Col, Nav, NavItem } from 'react-bootstrap';
+import Category from './category';
+import Input from './input';
 
 const FIELDS_CLASSES = 'col-xs-12 col-md-6 ';
 
@@ -52,13 +52,15 @@ const FIELDS = {
     type: 'select',
     fieldType: 'text',
     label: 'Typ pozycji',
-    classes: FIELDS_CLASSES
+    classes: FIELDS_CLASSES,
+    options: ['A', 'B', 'C']
   },
   availability: {
     type: 'select',
     fieldType: 'text',
     label: 'Dostępność',
-    classes: FIELDS_CLASSES
+    classes: FIELDS_CLASSES,
+    options: ['D', 'E', 'F', 'G']
   }
 };
 
@@ -78,7 +80,6 @@ class SearchBooks extends Component {
   }
 
   renderField(fieldConfig, field) {
-    console.log(`form-group` + fieldConfig.classes);
     return (
       <div
         className={`form-group ` + fieldConfig.classes}
@@ -88,9 +89,11 @@ class SearchBooks extends Component {
         <Field
           className="col-xs-12"
           name={field}
-          component="input"
-          type={fieldConfig.type}
+          component={Input}
+          componentClass={fieldConfig.type}
+          type={fieldConfig.fieldType}
           placeholder={fieldConfig.label}
+          options={'' || fieldConfig.options}
         />
       </div>
     );
@@ -145,12 +148,6 @@ class SearchBooks extends Component {
       </form>
     );
   }
-}
-
-function validate() {
-  const errors = {};
-  _.each(FIELDS, field => {});
-  return errors;
 }
 
 function mapStateToProps(state) {

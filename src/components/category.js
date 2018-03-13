@@ -1,17 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchCategories } from '../actions/index';
-import { ListGroup, ListGroupItem, FormGroup, Checkbox } from 'react-bootstrap';
+import { ListGroup, ListGroupItem, Checkbox } from 'react-bootstrap';
 import _ from 'lodash';
-import { reduxForm, Field } from 'redux-form';
-
-const renderField = field => (
-  <div className="input-row">
-    <input {...field.input} type="text" />
-    {field.meta.touched &&
-      field.meta.error && <span className="error">{field.meta.error}</span>}
-  </div>
-);
+import { Field } from 'redux-form';
 
 class Category extends Component {
   constructor(props, context) {
@@ -19,7 +11,6 @@ class Category extends Component {
 
     this.state = {
       expanded: false
-      //mainSelected: false
     };
 
     this.handleClick = this.handleClick.bind(this);

@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import reducers from './reducers';
 import routes from './routes';
-import registerServiceWorker from './registerServiceWorker';
+//import registerServiceWorker from './registerServiceWorker';
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
