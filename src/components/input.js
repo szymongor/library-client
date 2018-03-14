@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { FormControl, FormGroup, ControlLabel } from 'react-bootstrap';
+import {
+  FormControl,
+  FormGroup,
+  ControlLabel,
+  Checkbox
+} from 'react-bootstrap';
 import _ from 'lodash';
 
 class Input extends Component {
   renderOptions(optionValue) {
-    console.log(optionValue);
     return (
       <option key={optionValue} value={optionValue}>
         {optionValue}
@@ -63,7 +67,6 @@ class Input extends Component {
     if (touched && (error || warning)) {
       message = <span className="help-block">{error || warning}</span>;
     }
-    console.log(componentClass);
     return (
       <FormGroup validationState={validationState}>
         <ControlLabel>{label}</ControlLabel>

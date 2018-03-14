@@ -1,17 +1,13 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+body {
+  background-color: #d9c694;
+  /*text-align: center;*/
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+  background-color: #3d2607;
+  height: 60px;
+  padding: 5px;
+  color: #d9c694;
 }
 
 .App-title {
@@ -22,11 +18,27 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.searchForm {
+  height: 60vh;
+  overflow-y: auto;
+}
+
+.subcategory {
+  margin-left: 30px;
+}
+
+button[type='submit'] {
+  border: none;
+  background-color: #6e4c1d;
+  color: #d9c694;
+  height: 50px;
+}
+
+.btn-cancel {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 50px;
+  background-color: #5d1a17;
+  color: #d9c694;
+  height: 50px;
 }

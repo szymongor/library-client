@@ -70,6 +70,7 @@ class SearchBooks extends Component {
   };
 
   componentWillMount() {
+    console.log(this.props.initialValues);
     this.props.fetchCategories();
   }
 
@@ -110,7 +111,7 @@ class SearchBooks extends Component {
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <h3>Wyszukaj Książki</h3>
-        <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+        <Tab.Container id="left-tabs-example" defaultActiveKey="second">
           <Row className="clearfix">
             <Col sm={12}>
               <Nav bsStyle="tabs">
@@ -125,24 +126,29 @@ class SearchBooks extends Component {
             <Col sm={12}>
               <Tab.Content animation>
                 <Tab.Pane eventKey="first">
-                  {_.map(FIELDS, this.renderField.bind(this))}
+                  <div className="searchForm">
+                    {_.map(FIELDS, this.renderField.bind(this))}
+                  </div>
                 </Tab.Pane>
+
                 <Tab.Pane eventKey="second">
-                  {_.map(
-                    this.props.categories,
-                    this.renderCategorySelect.bind(this)
-                  )}
+                  <div className="searchForm">
+                    {_.map(
+                      this.props.categories,
+                      this.renderCategorySelect.bind(this)
+                    )}
+                  </div>
                 </Tab.Pane>
               </Tab.Content>
             </Col>
           </Row>
         </Tab.Container>
         <div className="btn-group pull-right col-md-offset-6 col-md-6">
-          <Link to="/" className="btn btn-danger col-md-6 col-xs-6">
-            Cancel
+          <Link to="/" className="btn-cancel col-md-6 col-xs-6">
+            Anuluj
           </Link>
-          <button type="submit" className="btn btn-primary col-md-6 col-xs-6">
-            Submit
+          <button type="submit" className="col-md-6 col-xs-6">
+            Szukaj
           </button>
         </div>
       </form>
@@ -159,10 +165,10 @@ function mapStateToProps(state) {
   };
 }
 
-SearchBooks = connect(mapStateToProps, { searchBooks, fetchCategories })(
-  SearchBooks
-);
-
-export default reduxForm({
+SearchBooks = reduxForm({
   form: 'searchBooksForm'
 })(SearchBooks);
+
+export default connect(mapStateToProps, { searchBooks, fetchCategories })(
+  SearchBooks
+);

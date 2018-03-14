@@ -4,6 +4,7 @@ import { fetchCategories } from '../actions/index';
 import { ListGroup, ListGroupItem, Checkbox } from 'react-bootstrap';
 import _ from 'lodash';
 import { Field } from 'redux-form';
+import Input from './input';
 
 class Category extends Component {
   constructor(props, context) {
@@ -13,16 +14,21 @@ class Category extends Component {
       expanded: false
     };
 
-    this.handleClick = this.handleClick.bind(this);
+    this.handleBarClick = this.handleBarClick.bind(this);
   }
 
-  handleClick() {
+  handleBarClick() {
     this.setState({
       expanded: !this.state.expanded
     });
   }
 
-  handleMainCheck(event) {}
+  handleMainCheck(event) {
+    event.stopPropagation();
+    console.log(event.target);
+  }
+
+  handleCheck() {}
 
   renderSubCategories(subCategory) {
     return (
@@ -31,26 +37,33 @@ class Category extends Component {
         key={subCategory.category_id}
         className={this.state.expanded ? '' : 'hidden'}
       >
-        <Checkbox inline>{subCategory.category_name}</Checkbox>
+        <div className="subcategory">
+          <Field
+            name={`categories.${subCategory.category_id}`}
+            id={subCategory.category_id}
+            component="input"
+            type="checkbox"
+          />
+          <label htmlFor="subCategory">{subCategory.category_name}</label>
+        </div>
       </ListGroupItem>
     );
   }
 
   renderMainCheckBox() {
-    // let checkBox = (
-    //   <Checkbox inline onChange={this.handleMainCheck.bind(this)}>
-    //     {this.props.category.main_category.category_name}
-    //   </Checkbox>
-    // );
+    const { category_id, category_name } = this.props.category.main_category;
     return (
       <div>
         <Field
-          name={this.props.category.main_category.category_id}
+          onClick={this.handleMainCheck}
+          name={`categories.${category_id}`}
+          id={category_id}
           component="input"
           type="checkbox"
-          placeholder="First Name"
         />
-        {this.props.category.main_category.category_name}
+        <label htmlFor="mainCategory" onClick={this.handleMainCheck}>
+          {category_name}
+        </label>
       </div>
     );
   }
@@ -58,7 +71,7 @@ class Category extends Component {
   render() {
     return (
       <ListGroup bsSize="small" className="col-xs-12">
-        <ListGroupItem bsSize="small" onClick={this.handleClick}>
+        <ListGroupItem bsSize="small" onClick={this.handleBarClick}>
           {this.renderMainCheckBox()}
         </ListGroupItem>
         {_.map(
