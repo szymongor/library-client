@@ -35,7 +35,7 @@ class Category extends Component {
       <ListGroupItem
         bsSize="small"
         key={subCategory.category_id}
-        className={this.state.expanded ? '' : 'hidden'}
+        className={'categoryElement ' + (this.state.expanded ? '' : 'hidden')}
       >
         <div className="subcategory">
           <Field
@@ -71,7 +71,11 @@ class Category extends Component {
   render() {
     return (
       <ListGroup bsSize="small" className="col-xs-12">
-        <ListGroupItem bsSize="small" onClick={this.handleBarClick}>
+        <ListGroupItem
+          bsClass="categoryElement"
+          bsSize="small"
+          onClick={this.handleBarClick}
+        >
           {this.renderMainCheckBox()}
         </ListGroupItem>
         {_.map(

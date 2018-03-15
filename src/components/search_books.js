@@ -10,6 +10,7 @@ import Category from './category';
 import Input from './input';
 
 const FIELDS_CLASSES = 'col-xs-12 col-md-6 ';
+const NAV_ITEM_CLASS = 'col-xs-6';
 
 const FIELDS = {
   syg_ms: {
@@ -114,11 +115,11 @@ class SearchBooks extends Component {
         <Tab.Container id="left-tabs-example" defaultActiveKey="second">
           <Row className="clearfix">
             <Col sm={12}>
-              <Nav bsStyle="tabs">
-                <NavItem className="col-xs-6" eventKey="first">
+              <Nav className="" bsStyle="tabs">
+                <NavItem className={NAV_ITEM_CLASS} eventKey="first">
                   Dane książki
                 </NavItem>
-                <NavItem className="col-xs-6" eventKey="second">
+                <NavItem className={NAV_ITEM_CLASS} eventKey="second">
                   Kategorie
                 </NavItem>
               </Nav>
