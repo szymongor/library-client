@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchCategories } from '../actions/index';
-import { ListGroup, ListGroupItem, Checkbox } from 'react-bootstrap';
+import { ListGroup, ListGroupItem } from 'react-bootstrap';
 import _ from 'lodash';
 import { Field } from 'redux-form';
-import Input from './input';
 
 class Category extends Component {
   constructor(props, context) {

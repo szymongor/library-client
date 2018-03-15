@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import {
-  FormControl,
-  FormGroup,
-  ControlLabel,
-  Checkbox
-} from 'react-bootstrap';
+import { FormControl, FormGroup, ControlLabel } from 'react-bootstrap';
 import _ from 'lodash';
 
 class Input extends Component {
