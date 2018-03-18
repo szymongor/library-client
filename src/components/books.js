@@ -9,7 +9,7 @@ class Books extends Component {
   }
 
   renderBooks() {
-    if (this.props.books) {
+    if (this.props.books && Array.isArray(this.props.books)) {
       return this.props.books.map(book => {
         return (
           <Link
@@ -17,7 +17,7 @@ class Books extends Component {
             key={book.signature_ms}
             className="list-group-item"
           >
-            <strong>{book.signature_ms} </strong>
+            Sygnatura ms: <strong>{book.signature_ms} </strong>, Tytuł:{' '}
             <span className="pull-xs-right">{book.title}</span>
           </Link>
         );
@@ -35,7 +35,7 @@ class Books extends Component {
             Search
           </Link>
         </div>
-        List of books:
+        <h3>Wyniki wyszukiwania</h3>
         <ul>{this.renderBooks()}</ul>
       </div>
     );

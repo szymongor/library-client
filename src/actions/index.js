@@ -1,4 +1,5 @@
 import axios from 'axios';
+import _ from 'lodash';
 
 export const SEARCH_BOOKS = 'SEARCH_BOOKS';
 export const FETCH_BOOKS = 'FETCH_BOOKS';
@@ -58,7 +59,9 @@ function formToQueryAdapter(formProps) {
         responsibility__contains: '',
         title__contains: '',
         volume__contains: '',
-        year__contains: ''
+        year__contains: '',
+        type__contains: '',
+        availability__contains: ''
       },
       pagination: { limit: 10, offset: 0 }
     }
@@ -75,7 +78,20 @@ function formToQueryAdapter(formProps) {
       query.query.filters.volume__contains = formProps.volume;
     if (formProps.year)
       query.query.filters.year__contains = String(formProps.year);
+    if (formProps.type) query.query.filters.type__contains = formProps.type;
+    if (formProps.availability)
+      query.query.filters.availability__contains = formProps.availability;
+    if (formProps.categories) {
+      query.query.categories = formCategoriesToArray(formProps.categories);
+    }
   }
 
   return query;
+}
+
+function formCategoriesToArray(formCategories) {
+  let categories = _.map(formCategories, (isSelected, category_id) => {
+    return category_id;
+  });
+  return categories;
 }

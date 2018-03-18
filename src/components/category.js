@@ -24,7 +24,6 @@ class Category extends Component {
 
   handleMainCheck(event) {
     event.stopPropagation();
-    console.log(event.target);
   }
 
   handleCheck() {}
