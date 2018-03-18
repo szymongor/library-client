@@ -9,8 +9,8 @@ import BookShow from './components/book_show';
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={Books} />
-    <Route path="books" component={Books} />
+    <Route path="booklist" component={Books} />
     <Route path="search" component={SearchBooks} />
-    <Route path="books/:syg_ms" component={BookShow} />
+    <Route path="booklist/:syg_ms" component={BookShow} />
   </Route>
 );

@@ -54,14 +54,14 @@ const FIELDS = {
     fieldType: 'text',
     label: 'Typ pozycji',
     classes: FIELDS_CLASSES,
-    options: ['A', 'B', 'C']
+    options: ['podręcznik', 'inny', 'zbiór zadań']
   },
   availability: {
     type: 'select',
     fieldType: 'text',
     label: 'Dostępność',
     classes: FIELDS_CLASSES,
-    options: ['D', 'E', 'F', 'G']
+    options: ['dostępna', 'wypożyczona', 'czytelnia']
   }
 };
 
@@ -71,14 +71,14 @@ class SearchBooks extends Component {
   };
 
   componentWillMount() {
-    console.log(this.props.initialValues);
+    //console.log(this.props.initialValues);
     this.props.fetchCategories();
   }
 
   onSubmit(props) {
     console.log(props);
     this.props.searchBooks(props);
-    this.context.router.push('books');
+    this.context.router.push('booklist');
   }
 
   renderField(fieldConfig, field) {
@@ -112,7 +112,7 @@ class SearchBooks extends Component {
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <h3>Wyszukaj Książki</h3>
-        <Tab.Container id="left-tabs-example" defaultActiveKey="second">
+        <Tab.Container id="left-tabs-example" defaultActiveKey="first">
           <Row className="clearfix">
             <Col sm={12}>
               <Nav className="" bsStyle="tabs">

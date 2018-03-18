@@ -13,7 +13,7 @@ class Books extends Component {
       return this.props.books.map(book => {
         return (
           <Link
-            to={'books/' + book.signature_ms}
+            to={'booklist/' + book.signature_ms}
             key={book.signature_ms}
             className="list-group-item"
           >

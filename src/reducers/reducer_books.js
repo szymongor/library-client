@@ -1,6 +1,6 @@
 import { SEARCH_BOOKS, FETCH_BOOKS, FETCH_BOOK } from '../actions/index';
 
-const INITIAL_STATE = { filters: [], books: [], categories: [], book: null };
+const INITIAL_STATE = { filters: [], books: [], categories: [], book: {} };
 
 export default function(state = INITIAL_STATE, action) {
   switch (action.type) {
