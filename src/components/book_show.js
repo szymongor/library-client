@@ -14,7 +14,7 @@ class BookShow extends Component {
     }
     return (
       <div>
-        <Link className="btn btn-danger" to="/books">
+        <Link className="btn btn-danger" to="/booklist">
           Back
         </Link>
         <h3>{book.title}</h3>

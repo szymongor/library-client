@@ -9,11 +9,12 @@ class Books extends Component {
   }
 
   renderBooks() {
-    if (this.props.books) {
+    console.log(this.props.books);
+    if (this.props.books && Array.isArray(this.props.books)) {
       return this.props.books.map(book => {
         return (
           <Link
-            to={'books/' + book.signature_ms}
+            to={'booklist/' + book.signature_ms}
             key={book.signature_ms}
             className="list-group-item"
           >
