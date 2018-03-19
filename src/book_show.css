@@ -1,0 +1,21 @@
+ul {
+  list-style-type: none;
+}
+
+li:first-child.book_show_element {
+  margin-top: 5px;
+}
+
+li:last-child.book_show_element {
+  border-bottom: none;
+}
+
+.book_show_element {
+  border-bottom: 2px solid;
+}
+
+kbd {
+  margin-left: 3px;
+  color: #d9c694;
+  background-color: #3d2607;
+}

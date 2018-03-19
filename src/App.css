@@ -53,6 +53,11 @@ a:focus {
   text-decoration: none;
 }
 
+.list-group-item:first-child {
+  border-radius: 0px;
+  border-top: 2px solid;
+}
+
 a.list-group-item,
 button.list-group-item {
   color: #3d2607;

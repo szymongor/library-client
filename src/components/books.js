@@ -37,7 +37,7 @@ class Books extends Component {
       <div>
         <div className="text-right">
           <Link to="search" className="btn btn-primary">
-            Search
+            Szukaj
           </Link>
         </div>
         <h3>Wyniki wyszukiwania</h3>

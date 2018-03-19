@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchBook } from '../actions/index';
 import { Link } from 'react-router';
 import _ from 'lodash';
+import '../book_show.css';
 
 class BookShow extends Component {
   componentWillMount() {
@@ -12,12 +13,14 @@ class BookShow extends Component {
   renderElement(label, content) {
     if (content !== '') {
       return (
-        <li>
+        <li className="book_show_element">
           <span>
             <b>{label}</b>
           </span>
           <br />
-          <span>{content}</span>
+          <span>
+            <h4>{content}</h4>
+          </span>
         </li>
       );
     }
@@ -26,15 +29,20 @@ class BookShow extends Component {
 
   renderCategories(categories) {
     return (
-      <li>
+      <li className="book_show_element">
         <span>
           <b>Kategorie książki</b>
         </span>
         <br />
         <span>
-          {_.map(categories, category => {
-            return category.category_name;
-          }).join(', ')}
+          <h4>
+            {_.map(categories, category => {
+              console.log(category);
+              return (
+                <kbd key={category.category_id}>{category.category_name}</kbd>
+              );
+            })}
+          </h4>
         </span>
       </li>
     );
@@ -48,7 +56,7 @@ class BookShow extends Component {
     return (
       <div>
         <Link className="btn btn-danger" to="/booklist">
-          Back
+          Wróć
         </Link>
 
         <ul>
