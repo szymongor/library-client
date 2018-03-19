@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import '../App.css';
 
 class App extends Component {
@@ -6,9 +7,11 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">
-            Biblioteka Wydziału Matematyki Stosowanej
-          </h1>
+          <Link to="/" className="text">
+            <h1 className="App-title">
+              Biblioteka Wydziału Matematyki Stosowanej
+            </h1>
+          </Link>
         </header>
         {this.props.children}
       </div>

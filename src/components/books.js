@@ -17,8 +17,13 @@ class Books extends Component {
             key={book.signature_ms}
             className="list-group-item"
           >
-            Sygnatura ms: <strong>{book.signature_ms} </strong>, Tytuł:{' '}
-            <span className="pull-xs-right">{book.title}</span>
+            <span>
+              <b>{book.title}</b>
+            </span>
+            <br />
+            <span>{book.responsibility}</span>
+            <br />
+            <span>{book.year}</span>
           </Link>
         );
       });

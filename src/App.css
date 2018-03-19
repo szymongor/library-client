@@ -14,12 +14,57 @@ button:focus {
   color: #d9c694;
 }
 
+a {
+  color: #d9c694;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #d9c694;
+  text-decoration: inherit;
+}
+
+a:visited {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+a:focus {
+  color: #d9c694;
+  text-decoration: inherit;
+}
+
 .App-title {
   font-size: 1.5em;
 }
 
 .App-intro {
   font-size: large;
+}
+
+/*Book list*/
+.list-group-item {
+  border-radius: 0px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid;
+  background-color: inherit;
+  text-decoration: none;
+}
+
+a.list-group-item,
+button.list-group-item {
+  color: #3d2607;
+}
+
+a.list-group-item:hover,
+button.list-group-item:hover,
+a.list-group-item:focus,
+button.list-group-item:focus {
+  color: #d9c694;
+  text-decoration: none;
+  background-color: #3d2607;
 }
 
 .searchForm {
