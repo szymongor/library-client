@@ -11,6 +11,7 @@ button:focus {
   background-color: #3d2607;
   height: 60px;
   padding: 5px;
+  margin-bottom: 5px;
   color: #d9c694;
 }
 
@@ -38,67 +39,15 @@ a:focus {
   font-size: 1.5em;
 }
 
+@media screen and (max-width: 449px) {
+  .App-title {
+    margin-top: 0px;
+    font-size: 1.5em;
+  }
+}
+
 .App-intro {
   font-size: large;
-}
-
-/*Book list*/
-.list-group-item {
-  border-radius: 0px;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 2px solid;
-  background-color: inherit;
-  text-decoration: none;
-}
-
-.list-group-item:first-child {
-  border-radius: 0px;
-  border-top: 2px solid;
-}
-
-a.list-group-item,
-button.list-group-item {
-  color: #3d2607;
-}
-
-a.list-group-item:hover,
-button.list-group-item:hover,
-a.list-group-item:focus,
-button.list-group-item:focus {
-  color: #d9c694;
-  text-decoration: none;
-  background-color: #3d2607;
-}
-
-.searchForm {
-  height: 60vh;
-  overflow-y: auto;
-}
-
-.subcategory {
-  margin-left: 10px;
-}
-
-button[type='submit'] {
-  border: none;
-  background-color: #6e4c1d;
-  color: #d9c694;
-  height: 50px;
-}
-
-.btn-cancel {
-  text-align: center;
-  vertical-align: middle;
-  line-height: 50px;
-  background-color: #5d1a17;
-  color: #d9c694;
-  height: 50px;
-}
-
-label {
-  margin-left: 5px;
 }
 
 .regular-checkbox {

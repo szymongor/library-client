@@ -35,13 +35,17 @@ class Books extends Component {
   render() {
     return (
       <div>
-        <div className="text-right">
-          <Link to="search" className="btn btn-primary">
-            Szukaj
-          </Link>
+        <Link
+          to="search"
+          className="col-md-offset-8 col-md-4 col-xs-12 btn-search"
+        >
+          <span className="glyphicon glyphicon-search" /> Szukaj
+        </Link>
+        <h3 className="col-xs-6">Wyniki wyszukiwania</h3>
+
+        <div className="col-xs-12">
+          <ul>{this.renderBooks()}</ul>
         </div>
-        <h3>Wyniki wyszukiwania</h3>
-        <ul>{this.renderBooks()}</ul>
       </div>
     );
   }

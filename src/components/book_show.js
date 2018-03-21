@@ -55,24 +55,25 @@ class BookShow extends Component {
     }
     return (
       <div>
-        <Link className="btn btn-danger" to="/booklist">
-          Wróć
+        <Link className="btn-cancel col-md-2 col-xs-6" to="/booklist">
+          <span className="	glyphicon glyphicon-chevron-left" /> Wróć
         </Link>
-
-        <ul>
-          {this.renderElement('Tytuł', book.title)}
-          {this.renderElement('Autorzy', book.responsibility)}
-          {this.renderElement('Rok wydania', book.year)}
-          {this.renderElement('Dostępność', book.availability)}
-          {this.renderElement('Typ pozycji', book.type)}
-          {this.renderElement('ISBN/ISSN', book.isbn_issn)}
-          {this.renderElement('Sygnatura biblioteki MS', book.signature_ms)}
-          {this.renderElement(
-            'Sygnatura biblioteki głównej',
-            book.signature_bg
-          )}
-          {this.renderCategories(book.categories)}
-        </ul>
+        <div className="col-xs-12">
+          <ul>
+            {this.renderElement('Tytuł', book.title)}
+            {this.renderElement('Autorzy', book.responsibility)}
+            {this.renderElement('Rok wydania', book.year)}
+            {this.renderElement('Dostępność', book.availability)}
+            {this.renderElement('Typ pozycji', book.type)}
+            {this.renderElement('ISBN/ISSN', book.isbn_issn)}
+            {this.renderElement('Sygnatura biblioteki MS', book.signature_ms)}
+            {this.renderElement(
+              'Sygnatura biblioteki głównej',
+              book.signature_bg
+            )}
+            {this.renderCategories(book.categories)}
+          </ul>
+        </div>
       </div>
     );
   }

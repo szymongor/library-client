@@ -8,6 +8,7 @@ import _ from 'lodash';
 import { Tab, Row, Col, Nav, NavItem } from 'react-bootstrap';
 import Category from './category';
 import Input from './input';
+import '../styles/search_books.css';
 
 const FIELDS_CLASSES = 'col-xs-12 col-md-6 ';
 const NAV_ITEM_CLASS = 'col-xs-6';
@@ -127,13 +128,13 @@ class SearchBooks extends Component {
             <Col sm={12}>
               <Tab.Content animation>
                 <Tab.Pane eventKey="first">
-                  <div className="searchForm">
+                  <div className="-searchForm">
                     {_.map(FIELDS, this.renderField.bind(this))}
                   </div>
                 </Tab.Pane>
 
                 <Tab.Pane eventKey="second">
-                  <div className="searchForm">
+                  <div className="-searchForm">
                     {_.map(
                       this.props.categories,
                       this.renderCategorySelect.bind(this)
@@ -144,12 +145,12 @@ class SearchBooks extends Component {
             </Col>
           </Row>
         </Tab.Container>
-        <div className="btn-group pull-right col-md-offset-6 col-md-6">
+        <div className="btn-group pull-right col-md-offset-6 col-md-6 col-xs-12 buttons-sticky">
           <Link to="/" className="btn-cancel col-md-6 col-xs-6">
-            Anuluj
+            <span className="glyphicon glyphicon-remove" /> Anuluj
           </Link>
-          <button type="submit" className="col-md-6 col-xs-6">
-            Szukaj
+          <button type="submit" className="col-md-6 col-xs-6 btn-search">
+            <span className="glyphicon glyphicon-search" /> Szukaj
           </button>
         </div>
       </form>
