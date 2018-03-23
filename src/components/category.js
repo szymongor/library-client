@@ -26,7 +26,13 @@ class Category extends Component {
     event.stopPropagation();
   }
 
-  handleCheck() {}
+  handleSubcategoryCheck(e) {
+    let targetInput = e.target.getElementsByTagName('input');
+    if (targetInput.length !== 0) {
+      let checkbox = targetInput[0];
+      checkbox.click();
+    }
+  }
 
   renderSubCategories(subCategory) {
     return (
@@ -34,6 +40,7 @@ class Category extends Component {
         bsSize="small"
         key={subCategory.category_id}
         className={'categoryElement ' + (this.state.expanded ? '' : 'hidden')}
+        onClick={this.handleSubcategoryCheck}
       >
         <div className="subcategory">
           <Field
