@@ -32,10 +32,7 @@ npm install
 npm start
 ```
 
-## Authors
+## Author
 
-* **Szymon Górnioczek** - *Initial work* - [szymongor](https://github.com/szymongor)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
+* **Szymon Górnioczek**  - [szymongor](https://github.com/szymongor)
 
