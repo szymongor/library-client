@@ -6,6 +6,8 @@ export const FETCH_BOOKS = 'FETCH_BOOKS';
 export const FETCH_CATEGORIES = 'FETCH_CATEGORIES';
 export const FETCH_BOOK = 'FETCH_BOOK';
 
+const PAGE_SIZE = 20;
+
 const ROOT_URL = 'http://157.158.16.217:8000';
 
 export function fetchCategories() {
@@ -16,11 +18,11 @@ export function fetchCategories() {
   };
 }
 
-export function fetchBooks(props) {
+export function fetchBooks(filters, page = 0) {
   const config = {
     headers: { 'content-type': 'application/json' }
   };
-  const query = formToQueryAdapter(props);
+  const query = formToQueryAdapter(filters, page);
   const request = axios.post(`${ROOT_URL}/books`, query, config);
 
   return {
@@ -48,7 +50,7 @@ export function fetchBook(id) {
   };
 }
 
-function formToQueryAdapter(formProps) {
+function formToQueryAdapter(formProps, page = 0) {
   const query = {
     query: {
       categories: [],
@@ -63,7 +65,7 @@ function formToQueryAdapter(formProps) {
         type__contains: '',
         availability__contains: ''
       },
-      pagination: { limit: 10, offset: 0 }
+      pagination: { limit: PAGE_SIZE, offset: page * PAGE_SIZE }
     }
   };
   if (formProps) {
