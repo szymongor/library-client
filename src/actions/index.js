@@ -6,7 +6,7 @@ export const FETCH_BOOKS = 'FETCH_BOOKS';
 export const FETCH_CATEGORIES = 'FETCH_CATEGORIES';
 export const FETCH_BOOK = 'FETCH_BOOK';
 
-const PAGE_SIZE = 20;
+export const PAGE_SIZE = 20;
 
 const ROOT_URL = 'http://157.158.16.217:8000';
 

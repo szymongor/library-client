@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { fetchBooks } from '../actions/index';
-
-const PAGE_SIZE = 20;
+import { fetchBooks, PAGE_SIZE } from '../actions/index';
 
 class Books extends Component {
   constructor() {
