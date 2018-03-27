@@ -1,0 +1,24 @@
+.go-search-btn {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 250px;
+  border: none;
+  background-color: #6e4c1d;
+  color: #d9c694 !important;
+  height: 250px;
+  font-size: 30px;
+}
+
+.go-search-btn:hover {
+  background-color: #3d2607;
+  color: #d9c694 !important;
+}
+
+@media screen and (max-width: 449px) {
+  .go-search-btn {
+    margin-top: 10px;
+    font-size: 1.5em;
+    line-height: 150px;
+    height: 150px;
+  }
+}

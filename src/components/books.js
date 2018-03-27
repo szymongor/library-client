@@ -89,9 +89,12 @@ class Books extends Component {
   render() {
     return (
       <div>
+        <Link to="/" className="btn-cancel col-md-4 col-xs-6">
+          <span className="glyphicon glyphicon-remove" /> Anuluj
+        </Link>
         <Link
           to="search"
-          className="col-md-offset-8 col-md-4 col-xs-12 btn-search"
+          className="col-md-offset-4 col-md-4 col-xs-12 btn-search"
         >
           <span className="glyphicon glyphicon-search" /> Szukaj
         </Link>

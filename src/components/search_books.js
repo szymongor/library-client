@@ -113,7 +113,7 @@ class SearchBooks extends Component {
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <h3>Wyszukaj Książki</h3>
-        <Tab.Container id="left-tabs-example" defaultActiveKey="second">
+        <Tab.Container id="left-tabs-example" defaultActiveKey="first">
           <Row className="clearfix">
             <Col sm={12}>
               <Nav className="" bsStyle="tabs">
