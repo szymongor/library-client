@@ -11,7 +11,7 @@ import Input from './input';
 import '../styles/search_books.css';
 
 const FIELDS_CLASSES = 'col-xs-12 col-md-6 ';
-const NAV_ITEM_CLASS = 'col-xs-6';
+const NAV_ITEM_CLASS = 'col-xs-6 tabs-cards';
 
 const FIELDS = {
   syg_ms: {
@@ -72,12 +72,10 @@ class SearchBooks extends Component {
   };
 
   componentWillMount() {
-    //console.log(this.props.initialValues);
     this.props.fetchCategories();
   }
 
   onSubmit(props) {
-    console.log(props);
     this.props.searchBooks(props);
     this.context.router.push('booklist');
   }

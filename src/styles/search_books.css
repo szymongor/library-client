@@ -52,13 +52,6 @@ button.list-group-item:focus {
   background-color: #3d2607;
 }
 
-/* button[type='submit'] {
-  border: none;
-  background-color: #6e4c1d;
-  color: #d9c694;
-  height: 50px;
-} */
-
 .btn-search {
   text-align: center;
   vertical-align: middle;
@@ -80,4 +73,14 @@ button.list-group-item:focus {
 
 label {
   margin-left: 5px;
+}
+
+/*TAB CARDS*/
+
+.tabs-cards {
+  padding-left: 0px;
+}
+
+.nav-tabs > li > a {
+  margin-right: 0px;
 }

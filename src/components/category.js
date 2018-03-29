@@ -77,6 +77,7 @@ class Category extends Component {
     return (
       <ListGroup bsSize="small" className="col-xs-12">
         <ListGroupItem
+          className="col-xs-12"
           bsClass="categoryElement"
           bsSize="small"
           onClick={this.handleBarClick}
