@@ -14,6 +14,36 @@ const FIELDS_CLASSES = 'col-xs-12 col-md-6 ';
 const NAV_ITEM_CLASS = 'col-xs-6 tabs-cards';
 
 const FIELDS = {
+  title: {
+    type: 'input',
+    fieldType: 'text',
+    label: 'Tytuł',
+    classes: FIELDS_CLASSES
+  },
+  author: {
+    type: 'input',
+    fieldType: 'text',
+    label: 'Autor/ Redaktor',
+    classes: FIELDS_CLASSES
+  },
+  year: {
+    type: 'input',
+    fieldType: 'number',
+    label: 'Rok',
+    classes: 'col-xs-12 col-md-3 '
+  },
+  volume: {
+    type: 'input',
+    fieldType: 'text',
+    label: 'Tom',
+    classes: 'col-xs-12 col-md-3 '
+  },
+  isbn_issn: {
+    type: 'input',
+    fieldType: 'text',
+    label: 'ISBN/ISSN',
+    classes: FIELDS_CLASSES
+  },
   syg_ms: {
     type: 'input',
     fieldType: 'number',
@@ -26,29 +56,12 @@ const FIELDS = {
     label: 'Sygnatura biblioteki głównej',
     classes: FIELDS_CLASSES
   },
-  author: {
-    type: 'input',
+  availability: {
+    type: 'select',
     fieldType: 'text',
-    label: 'Autor/ Redaktor',
-    classes: FIELDS_CLASSES
-  },
-  title: {
-    type: 'input',
-    fieldType: 'text',
-    label: 'Tytuł',
-    classes: FIELDS_CLASSES
-  },
-  volume: {
-    type: 'input',
-    fieldType: 'text',
-    label: 'Tom',
-    classes: FIELDS_CLASSES
-  },
-  year: {
-    type: 'input',
-    fieldType: 'number',
-    label: 'Rok',
-    classes: FIELDS_CLASSES
+    label: 'Dostępność',
+    classes: FIELDS_CLASSES,
+    options: ['dostępna', 'wypożyczona', 'czytelnia']
   },
   type: {
     type: 'select',
@@ -56,13 +69,6 @@ const FIELDS = {
     label: 'Typ pozycji',
     classes: FIELDS_CLASSES,
     options: ['podręcznik', 'inny', 'zbiór zadań']
-  },
-  availability: {
-    type: 'select',
-    fieldType: 'text',
-    label: 'Dostępność',
-    classes: FIELDS_CLASSES,
-    options: ['dostępna', 'wypożyczona', 'czytelnia']
   }
 };
 
