@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import App from './components/App';
-import Books from './components/books';
+import Books from './components/Books/books';
 import SearchBooks from './components/search_books';
 import BookShow from './components/book_show';
 import FirstPage from './components/first_page';
