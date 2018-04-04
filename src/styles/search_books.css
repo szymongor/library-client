@@ -83,4 +83,5 @@ label {
 
 .nav-tabs > li > a {
   margin-right: 0px;
+  border-radius: 0px;
 }

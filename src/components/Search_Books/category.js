@@ -4,6 +4,7 @@ import { fetchCategories } from '../../actions/index';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 import _ from 'lodash';
 import { Field } from 'redux-form';
+import '../../styles/categories.css';
 
 class Category extends Component {
   constructor(props, context) {
@@ -13,21 +14,26 @@ class Category extends Component {
       expanded: false
     };
 
-    this.handleBarClick = this.handleBarClick.bind(this);
+    this.handleExpandClick = this.handleExpandClick.bind(this);
   }
 
-  handleBarClick() {
+  handleExpandClick() {
     this.setState({
       expanded: !this.state.expanded
     });
   }
 
   handleMainCheck(e) {
+    let targetInput = e.target.getElementsByTagName('input');
+    if (targetInput.length !== 0) {
+      let checkbox = targetInput[0];
+      checkbox.click();
+    }
     let siblingCheckbox = e.target.previousSibling;
     if (siblingCheckbox && siblingCheckbox.type === 'checkbox') {
+      console.log(siblingCheckbox);
       siblingCheckbox.click();
     }
-    e.stopPropagation();
   }
 
   handleSubcategoryCheck(e) {
@@ -65,6 +71,7 @@ class Category extends Component {
 
   renderMainCheckBox() {
     const { category_id, category_name } = this.props.category.main_category;
+    const { subcategories } = this.props.category;
     return (
       <div>
         <Field
@@ -74,11 +81,25 @@ class Category extends Component {
           component="input"
           type="checkbox"
         />
-        <label htmlFor="mainCategory" onClick={this.handleMainCheck}>
-          {category_name}
-        </label>
+        <label htmlFor="mainCategory">{category_name}</label>
+        {this.renderCategoryExpander(subcategories)}
       </div>
     );
+  }
+
+  renderCategoryExpander(subcategories) {
+    if (subcategories.length) {
+      return (
+        <div
+          className="btn btn-default pull-right categories-expand"
+          onClick={this.handleExpandClick}
+        >
+          <span className="caret" />
+        </div>
+      );
+    } else {
+      return <div />;
+    }
   }
 
   render() {
@@ -88,7 +109,7 @@ class Category extends Component {
           className="col-xs-12"
           bsClass="categoryElement"
           bsSize="small"
-          onClick={this.handleBarClick}
+          onClick={this.handleMainCheck}
         >
           {this.renderMainCheckBox()}
         </ListGroupItem>

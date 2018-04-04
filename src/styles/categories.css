@@ -1,0 +1,25 @@
+.categories-expand {
+  color: #3d2607;
+  background-color: #d9c694;
+  border-color: #3d2607;
+  border: 2px solid;
+  border-radius: 0px;
+}
+
+.categories-expand:hover {
+  color: #6e4c1d;
+  background-color: #d9c694;
+  border-color: #6e4c1d;
+}
+
+.categories-expand:focus {
+  color: #3d2607;
+  background-color: #d9c694;
+  border-color: #3d2607;
+}
+
+.categories-expand:active {
+  color: #3d2607;
+  background-color: #d9c694;
+  border-color: #3d2607;
+}
