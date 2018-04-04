@@ -5,6 +5,7 @@ export const SEARCH_BOOKS = 'SEARCH_BOOKS';
 export const FETCH_BOOKS = 'FETCH_BOOKS';
 export const FETCH_CATEGORIES = 'FETCH_CATEGORIES';
 export const FETCH_BOOK = 'FETCH_BOOK';
+export const FETCH_NEW_BOOKS = 'FETCH_NEW_BOOKS';
 
 export const PAGE_SIZE = 20;
 
@@ -23,12 +24,19 @@ export function fetchBooks(filters, page = 0) {
     headers: { 'content-type': 'application/json' }
   };
   const query = formToQueryAdapter(filters, page);
+  console.log(query);
   const request = axios.post(`${ROOT_URL}/books`, query, config);
-
-  return {
-    type: FETCH_BOOKS,
-    payload: request
-  };
+  if (page === 0) {
+    return {
+      type: FETCH_NEW_BOOKS,
+      payload: request
+    };
+  } else {
+    return {
+      type: FETCH_BOOKS,
+      payload: request
+    };
+  }
 }
 
 export function searchBooks(props) {

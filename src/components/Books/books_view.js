@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 class BooksView extends Component {
   renderBooks() {
     let books = this.props.booksData;
-    if (books) {
+    if (books.length) {
       return books.map(book => {
         return (
           <Link
@@ -23,7 +23,7 @@ class BooksView extends Component {
         );
       });
     } else {
-      return [];
+      return <div>Brak książek</div>;
     }
   }
 

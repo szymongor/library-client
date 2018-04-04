@@ -25,15 +25,16 @@ class Category extends Component {
 
   handleMainCheck(e) {
     let targetInput = e.target.getElementsByTagName('input');
+    console.log(targetInput);
     if (targetInput.length !== 0) {
       let checkbox = targetInput[0];
       checkbox.click();
     }
     let siblingCheckbox = e.target.previousSibling;
     if (siblingCheckbox && siblingCheckbox.type === 'checkbox') {
-      console.log(siblingCheckbox);
       siblingCheckbox.click();
     }
+    //check all subcategoires
   }
 
   handleSubcategoryCheck(e) {
