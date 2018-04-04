@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
-import { searchBooks, fetchCategories } from '../actions/index';
+import { searchBooks, fetchCategories } from '../../actions/index';
 import { Link } from 'react-router';
 import _ from 'lodash';
 import { Tab, Row, Col, Nav, NavItem } from 'react-bootstrap';
 import Category from './category';
 import Input from './input';
-import '../styles/search_books.css';
+import '../../styles/search_books.css';
 
 const FIELDS_CLASSES = 'col-xs-12 col-md-6 ';
 const NAV_ITEM_CLASS = 'col-xs-6 tabs-cards';
@@ -117,7 +117,7 @@ class SearchBooks extends Component {
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <h3>Wyszukaj Książki</h3>
-        <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+        <Tab.Container id="left-tabs-example" defaultActiveKey="second">
           <Row className="clearfix">
             <Col sm={12}>
               <Nav className="" bsStyle="tabs">

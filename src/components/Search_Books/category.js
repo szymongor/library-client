@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCategories } from '../actions/index';
+import { fetchCategories } from '../../actions/index';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 import _ from 'lodash';
 import { Field } from 'redux-form';
@@ -22,8 +22,12 @@ class Category extends Component {
     });
   }
 
-  handleMainCheck(event) {
-    event.stopPropagation();
+  handleMainCheck(e) {
+    let siblingCheckbox = e.target.previousSibling;
+    if (siblingCheckbox && siblingCheckbox.type === 'checkbox') {
+      siblingCheckbox.click();
+    }
+    e.stopPropagation();
   }
 
   handleSubcategoryCheck(e) {
@@ -31,6 +35,10 @@ class Category extends Component {
     if (targetInput.length !== 0) {
       let checkbox = targetInput[0];
       checkbox.click();
+    }
+    let siblingCheckbox = e.target.previousSibling;
+    if (siblingCheckbox && siblingCheckbox.type === 'checkbox') {
+      siblingCheckbox.click();
     }
   }
 
